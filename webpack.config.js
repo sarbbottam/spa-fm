@@ -1,7 +1,8 @@
 module.exports = {
   devtool: 'source-map',
   entry: {
-    vanilla: './lib/vanilla/index.js'
+    'hash-change': './lib/vanilla/hash-change/index.js',
+    'data-ref': './lib/vanilla/data-ref/index.js'
   },
   output: {
     libraryTarget: 'umd',
