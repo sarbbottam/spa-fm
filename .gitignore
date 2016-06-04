@@ -18,6 +18,7 @@ test-results.xml
 ###################
 out
 dist
+gh-pages
 example/main.js
 
 # Node #

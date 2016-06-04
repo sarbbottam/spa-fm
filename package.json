@@ -5,7 +5,8 @@
   "description": "single page application - focus management",
   "scripts": {
     "test": "xo",
-    "build": "webpack"
+    "build": "webpack",
+    "gh-pages": "./script/gh-pages.sh"
   },
   "repository": {
     "type": "git",

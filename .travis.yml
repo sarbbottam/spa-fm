@@ -1,19 +1,23 @@
 language: node_js
 cache:
   directories:
-    - node_modules
+  - node_modules
 notifications:
   email: false
 node_js:
-  - stable
+- stable
 before_install:
-  - npm i -g npm@^3.0.0
+- npm i -g npm@^3.0.0
 before_script:
-  - npm prune
+- npm prune
 script:
-  - npm test
-  - npm run build
+- npm test
+- npm run build
 after_success:
+- npm run gh-pages
 branches:
-  - only
-    - master
+- only - master
+env:
+  global:
+  - GH_REF: github.com/sarbbottam/spa-fm
+  - secure: qO00OE3S5fW+odhiF7DVDqpn+c1TIhBAMmpkcpsO9K4ptfzqS1dWbQKGCuuXwpJvtWbON8l+VKywg3Nyn+3gvQJSh9J86YS+eSTW4Rooxt+rPCeEc+NYKj5IBjzz1DTWGarVOT0mU1Eoa2unGdwRs+uFZ1U/gj7Euks3Gv6QyWc+svV5gkpbfsDYBOW8+h+ck8mUSnWMcHWmhPGwh0/knxy+lSu63gb3pKyAq8U+Bgk5RpKYfFm2WUlM1ULGx2C6R8770IwMp8j9aIHEL6LAHZIbUmpyz8rji634p/rG2wDl/aew26xoD2fI5a5MSPibMMNee2nvrT+iM/MGHPdfZTpKv980udQnda6v5wdgSjY/9YacRfxuTJCuw0D4+Oyry/ISHXUWIfVbIlN8Vkh+WO+ZLfrd0j/4JHFZFVGtydbB0mhxLCphoU80mOUyUmEjiXz9kCxxeMzBDJMFnuGoJTw3TAc/6lheaLLuSBleyKmEQA85paBb4bO3oBt24yMp8WP4Cmbb/DOOjPMwg+uqsY5OvXqnPbC3W2ICsz92bivwrUIENiQbZYNhKZTXE1lHuSUGH2foaV6qEd2L2HeeruUtXITcNL2r2d9zkvnlhgcTtSJY9cIDu2zFMvbhL6bBnTY5YrtmmvzEOroIXp52CsGJV5fo9yjpZXRW2GBDhgc=
