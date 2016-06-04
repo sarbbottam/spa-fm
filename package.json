@@ -1,0 +1,40 @@
+{
+  "name": "spa-fm",
+  "version": "0.0.0",
+  "private": true,
+  "description": "single page application - focus management",
+  "scripts": {
+    "test": "xo",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:sarbbottam/spa-fm.git"
+  },
+  "keywords": [
+    "data-structure",
+    "javascript"
+  ],
+  "author": "Sarbbottam Bandyopadhyay <sarbbottam@gmail.com> (https://sarbbottam.github.io/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sarbbottam/spa-fm/issues"
+  },
+  "homepage": "https://github.com/sarbbottam/spa-fm",
+  "devDependencies": {
+    "babel-core": "^6.9.1",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.9.0",
+    "eslint": "^2.11.1",
+    "webpack": "^1.13.1",
+    "webpack-dev-server": "^1.14.1",
+    "xo": "^0.15.1"
+  },
+  "xo": {
+    "env": [
+      "browser"
+    ],
+    "esnext": true,
+    "space": true
+  }
+}

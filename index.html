@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>spa-fm</title>
+  </head>
+  <body>
+    <script>
+      function getParameterByName(name, url) {
+        if (!url) url = window.location.href;
+        name = name.replace(/[\[\]]/g, "\\$&");
+        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+          results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, " "));
+      }
+      var dist = 'dist/'
+      var type = getParameterByName('type');
+      type = type || 'vanilla';
+
+      var resource = document.createElement('script');
+      resource.src = dist + type + '.js';
+      var script = document.getElementsByTagName('script')[0];
+      script.parentNode.insertBefore(resource, script);
+    </script>
+  </body>
+</html>
