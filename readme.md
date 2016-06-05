@@ -15,17 +15,31 @@ My guess, the **focus jumping behavior** mentioned at [github.com/ember-a11y/emb
 
 ---
 
-There are two implementation of [github.com/ember-a11y/ember-a11y/ - demo](http://ember-a11y.github.io/ember-a11y/) in this repo,
-both the implementations are in [Vanilla JavaScript](http://vanilla-js.com/), with out using any framework.
+There are three implementations of [github.com/ember-a11y/ember-a11y/ - demo](http://ember-a11y.github.io/ember-a11y/) in this repo,
+all the implementations are in [Vanilla JavaScript](http://vanilla-js.com/), with out using any framework.
 
 * [hash-change](https://github.com/sarbbottam/spa-fm/tree/master/lib/vanilla/hash-change)
 * [data-ref](https://github.com/sarbbottam/spa-fm/tree/master/lib/vanilla/data-ref)
+* [data-ref-hash-change](https://github.com/sarbbottam/spa-fm/tree/master/lib/vanilla/data-ref-hash-change)
 
 To see the implementation in action, please visit
 * hash-change - http://sarbbottam.github.io/spa-fm/?type=hash-change
 * data-ref http://sarbbottam.github.io/spa-fm/?type=data-ref
+* data-ref-hash-change http://sarbbottam.github.io/spa-fm/?type=data-ref-hash-change
 
-Please note the `query-param`, `type=hash-change` and `type=data-ref`. Without any `query-param`, it will default to `hash-change` behavior.
+Please note the `query-param`, `type=hash-change`, `type=data-ref` and `type=data-ref-hash-change`. Without any `query-param`, it will default to `hash-change` behavior.
+
+## Implementation overview
+
+* hash-change - router looks for the `window.location.hash` and updates the view
+* data-ref - router looks for `data-ref` attribute in the clicked link and updates the view
+* data-ref-hash-change - router looks for `data-ref` attribute in the clicked link and updates the view and `window.location.hash`
+
+## Observation
+
+* hash-change - jumping focus behavior in Safari & VoiceOver combination in El Capitan
+* data-ref - **no jumping focus behavior in Safari & VoiceOver combination in El Capitan**
+* data-ref-hash-change - jumping focus behavior in Safari & VoiceOver combination in El Capitan
 
 ## Why there is no jumping focus in `data-ref` implementation in Safari & VoiceOver combination in El Capitan?
 
@@ -41,7 +55,7 @@ My guess, Safari & VoiceOver combination in El Capitan, is trying to set focus i
 - clone the repository `git clone git@github.com:sarbbottam/spa-fm.git`
 - `cd` into the cloned directory `cd spa-fm`
 - install dependencies `npm i`
-- build the implemetations `npm run build`
+- build the implementations `npm run build`
 - open index.html
 - pass `query-param` `type=hash-change` or `type=data-ref` or `type=data-ref-hash-change` to the url of the index.html, default is `hash-change` behavior.
 - make changes, reload the page
