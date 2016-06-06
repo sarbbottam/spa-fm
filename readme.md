@@ -41,6 +41,10 @@ Please note the `query-param`, `type=hash-change`, `type=data-ref` and `type=dat
 * data-ref - **no jumping focus behavior in Safari & VoiceOver combination in El Capitan**
 * data-ref-hash-change - jumping focus behavior in Safari & VoiceOver combination in El Capitan
 
+## Screencast
+
+[![Jumping focus in Safari/El Capitan with Voice Over ](http://i.imgur.com/TUHX3GJ.png)](https://www.youtube.com/watch?v=hYIX24nA8qI)
+
 ## Why there is no jumping focus in `data-ref` implementation in Safari & VoiceOver combination in El Capitan?
 
 My guess, Safari & VoiceOver combination in El Capitan, is trying to set focus intelligently by referring the current URL and the `hash` fragment.
