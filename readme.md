@@ -18,34 +18,34 @@ My guess, the **focus jumping behavior** mentioned at [github.com/ember-a11y/emb
 There are three implementations of [github.com/ember-a11y/ember-a11y/ - demo](http://ember-a11y.github.io/ember-a11y/) in this repo,
 all the implementations are in [Vanilla JavaScript](http://vanilla-js.com/), with out using any framework.
 
-* [hash-change](https://github.com/sarbbottam/spa-fm/tree/master/lib/vanilla/hash-change)
-* [data-ref](https://github.com/sarbbottam/spa-fm/tree/master/lib/vanilla/data-ref)
-* [data-ref-hash-change](https://github.com/sarbbottam/spa-fm/tree/master/lib/vanilla/data-ref-hash-change)
+* [on-hash-change](https://github.com/sarbbottam/spa-fm/tree/master/lib/vanilla/on-hash-change)
+* [on-click-prevent-default](https://github.com/sarbbottam/spa-fm/tree/master/lib/vanilla/on-click-prevent-default)
+* [on-click-prevent-default-change-hash](https://github.com/sarbbottam/spa-fm/tree/master/lib/vanilla/on-click-prevent-default-change-hash)
 
 To see the implementation in action, please visit
-* hash-change - http://sarbbottam.github.io/spa-fm/?type=hash-change
-* data-ref http://sarbbottam.github.io/spa-fm/?type=data-ref
-* data-ref-hash-change http://sarbbottam.github.io/spa-fm/?type=data-ref-hash-change
+* on-hash-change - http://sarbbottam.github.io/spa-fm/?type=on-hash-change
+* on-click-prevent-default http://sarbbottam.github.io/spa-fm/?type=on-click-prevent-default
+* on-click-prevent-default-change-hash http://sarbbottam.github.io/spa-fm/?type=on-click-prevent-default-change-hash
 
-Please note the `query-param`, `type=hash-change`, `type=data-ref` and `type=data-ref-hash-change`. Without any `query-param`, it will default to `hash-change` behavior.
+Please note the `query-param`, `type=on-hash-change`, `type=on-click-prevent-default` and `type=on-click-prevent-default-change-hash`. Without any `query-param`, it will default to `on-hash-change` behavior.
 
 ## Implementation overview
 
-* hash-change - router looks for the `window.location.hash` and updates the view
-* data-ref - router looks for `data-ref` attribute in the clicked link and updates the view
-* data-ref-hash-change - router looks for `data-ref` attribute in the clicked link and updates the view and `window.location.hash`
+* on-hash-change - router looks for the `window.location.hash` and updates the view
+* on-click-prevent-default - router looks for `on-click-prevent-default` attribute in the clicked link and updates the view
+* on-click-prevent-default-change-hash - router looks for `on-click-prevent-default` attribute in the clicked link and updates the view and `window.location.hash`
 
 ## Observation
 
-* hash-change - jumping focus behavior in Safari & VoiceOver combination in El Capitan
-* data-ref - **no jumping focus behavior in Safari & VoiceOver combination in El Capitan**
-* data-ref-hash-change - jumping focus behavior in Safari & VoiceOver combination in El Capitan
+* on-hash-change - jumping focus behavior in Safari & VoiceOver combination in El Capitan
+* on-click-prevent-default - **no jumping focus behavior in Safari & VoiceOver combination in El Capitan**
+* on-click-prevent-default-change-hash - jumping focus behavior in Safari & VoiceOver combination in El Capitan
 
 ## Screencast
 
 [![Jumping focus in Safari/El Capitan with Voice Over ](http://i.imgur.com/TUHX3GJ.png)](https://www.youtube.com/watch?v=hYIX24nA8qI)
 
-## Why there is no jumping focus in `data-ref` implementation in Safari & VoiceOver combination in El Capitan?
+## Why there is no jumping focus in `on-click-prevent-default` implementation in Safari & VoiceOver combination in El Capitan?
 
 My guess, Safari & VoiceOver combination in El Capitan, is trying to set focus intelligently by referring the current URL and the `hash` fragment.
 
@@ -61,5 +61,5 @@ My guess, Safari & VoiceOver combination in El Capitan, is trying to set focus i
 - install dependencies `npm i`
 - build the implementations `npm run build`
 - open index.html
-- pass `query-param` `type=hash-change` or `type=data-ref` or `type=data-ref-hash-change` to the url of the index.html, default is `hash-change` behavior.
+- pass `query-param` `type=on-hash-change` or `type=on-click-prevent-default` or `type=on-click-prevent-default-change-hash` to the url of the index.html, default is `on-hash-change` behavior.
 - make changes, reload the page
