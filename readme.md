@@ -21,31 +21,41 @@ all the implementations are in [Vanilla JavaScript](http://vanilla-js.com/), wit
 * [on-hash-change](https://github.com/sarbbottam/spa-fm/tree/master/lib/vanilla/on-hash-change)
 * [on-click-prevent-default](https://github.com/sarbbottam/spa-fm/tree/master/lib/vanilla/on-click-prevent-default)
 * [on-click-prevent-default-change-hash](https://github.com/sarbbottam/spa-fm/tree/master/lib/vanilla/on-click-prevent-default-change-hash)
+* [on-click-prevent-default-change-location](https://github.com/sarbbottam/spa-fm/tree/master/lib/vanilla/on-click-prevent-default-change-location)
 
 To see the implementation in action, please visit
 * on-hash-change - http://sarbbottam.github.io/spa-fm/?type=on-hash-change
 * on-click-prevent-default http://sarbbottam.github.io/spa-fm/?type=on-click-prevent-default
 * on-click-prevent-default-change-hash http://sarbbottam.github.io/spa-fm/?type=on-click-prevent-default-change-hash
+* on-click-prevent-default-change-location http://sarbbottam.github.io/spa-fm/?type=on-click-prevent-default-change-location
 
-Please note the `query-param`, `type=on-hash-change`, `type=on-click-prevent-default` and `type=on-click-prevent-default-change-hash`. Without any `query-param`, it will default to `on-hash-change` behavior.
+Please note the `query-param`
+* `type=on-hash-change`
+* `type=on-click-prevent-default`
+* `type=on-click-prevent-default-change-hash`.
+* `type=on-click-prevent-default-change-location`.
+
+Without any `query-param`, it will default to `on-click-prevent-default-change-location` behavior.
 
 ## Implementation overview
 
 * on-hash-change - router looks for the `window.location.hash` and updates the view
-* on-click-prevent-default - router looks for `on-click-prevent-default` attribute in the clicked link and updates the view
-* on-click-prevent-default-change-hash - router looks for `on-click-prevent-default` attribute in the clicked link and updates the view and `window.location.hash`
+* on-click-prevent-default - router looks for `href` attribute in the clicked link and updates the view
+* on-click-prevent-default-change-hash - router looks for `href` attribute in the clicked link and updates the view and `window.location.hash`
+* on-click-prevent-default-change-location - router looks for `href` attribute in the clicked link and updates the view and `window.history`
 
 ## Observation
 
 * on-hash-change - jumping focus behavior in Safari & VoiceOver combination in El Capitan
 * on-click-prevent-default - **no jumping focus behavior in Safari & VoiceOver combination in El Capitan**
 * on-click-prevent-default-change-hash - jumping focus behavior in Safari & VoiceOver combination in El Capitan
+* on-click-prevent-default-change-location - **no jumping focus behavior in Safari & VoiceOver combination in El Capitan**
 
 ## Screencast
 
 [![Jumping focus in Safari/El Capitan with Voice Over ](http://i.imgur.com/TUHX3GJ.png)](https://www.youtube.com/watch?v=hYIX24nA8qI)
 
-## Why there is no jumping focus in `on-click-prevent-default` implementation in Safari & VoiceOver combination in El Capitan?
+## Why there is no jumping focus in `on-click-prevent-default` & `on-click-prevent-default-change-location` implementation in Safari & VoiceOver combination in El Capitan?
 
 My guess, Safari & VoiceOver combination in El Capitan, is trying to set focus intelligently by referring the current URL and the `hash` fragment.
 
@@ -60,6 +70,6 @@ My guess, Safari & VoiceOver combination in El Capitan, is trying to set focus i
 - `cd` into the cloned directory `cd spa-fm`
 - install dependencies `npm i`
 - build the implementations `npm run build`
-- open index.html
+- run webpack-dev-server - `npm start`
 - pass `query-param` `type=on-hash-change` or `type=on-click-prevent-default` or `type=on-click-prevent-default-change-hash` to the url of the index.html, default is `on-hash-change` behavior.
 - make changes, reload the page

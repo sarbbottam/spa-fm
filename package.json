@@ -4,6 +4,7 @@
   "private": true,
   "description": "single page application - focus management",
   "scripts": {
+    "start": "webpack-dev-server",
     "test": "xo",
     "build": "webpack",
     "gh-pages": "./script/gh-pages.sh"
