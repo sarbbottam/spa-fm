@@ -1,6 +1,8 @@
 spa-fm: Single Page Application - Focus Management
 ---
 
+## Safari & VoiceOver combination in El Capitan
+
 Safari & VoiceOver combination in El Capitan seems to intelligently setting the focus to web page.
 The focus jumps automatically between updated content and the existing content in SPA.
 
@@ -15,19 +17,19 @@ My guess, the **focus jumping behavior** mentioned at [github.com/ember-a11y/emb
 
 ---
 
+### Implementation
+
 There are three implementations of [github.com/ember-a11y/ember-a11y/ - demo](http://ember-a11y.github.io/ember-a11y/) in this repo,
 all the implementations are in [Vanilla JavaScript](http://vanilla-js.com/), with out using any framework.
 
-* [on-hash-change](https://github.com/sarbbottam/spa-fm/tree/master/lib/vanilla/on-hash-change)
-* [on-click-prevent-default](https://github.com/sarbbottam/spa-fm/tree/master/lib/vanilla/on-click-prevent-default)
-* [on-click-prevent-default-change-hash](https://github.com/sarbbottam/spa-fm/tree/master/lib/vanilla/on-click-prevent-default-change-hash)
-* [on-click-prevent-default-change-location](https://github.com/sarbbottam/spa-fm/tree/master/lib/vanilla/on-click-prevent-default-change-location)
-
-To see the implementation in action, please visit
-* on-hash-change - http://sarbbottam.github.io/spa-fm/?type=on-hash-change
-* on-click-prevent-default http://sarbbottam.github.io/spa-fm/?type=on-click-prevent-default
-* on-click-prevent-default-change-hash http://sarbbottam.github.io/spa-fm/?type=on-click-prevent-default-change-hash
-* on-click-prevent-default-change-location http://sarbbottam.github.io/spa-fm/?type=on-click-prevent-default-change-location
+- [on-hash-change](https://github.com/sarbbottam/spa-fm/tree/master/lib/vanilla/on-hash-change) -
+router looks for change in `window.location.hash` and updates the view
+- [on-click-prevent-default](https://github.com/sarbbottam/spa-fm/tree/master/lib/vanilla/on-click-prevent-default) -
+router looks for `href` attribute in the clicked `link`, _prevents the default behavior_, and updates the view
+- [on-click-prevent-default-change-hash](https://github.com/sarbbottam/spa-fm/tree/master/lib/vanilla/on-click-prevent-default-change-hash) -
+router looks for `href` attribute in the clicked `link`, _prevents the default behavior_, updates the view and `window.location.hash`
+- [on-click-prevent-default-change-location](https://github.com/sarbbottam/spa-fm/tree/master/lib/vanilla/on-click-prevent-default-change-location) -
+router looks for `href` attribute in the clicked `link`, _prevents the default behavior_, updates the view and `window.history`
 
 Please note the `query-param`
 * `type=on-hash-change`
@@ -37,29 +39,26 @@ Please note the `query-param`
 
 Without any `query-param`, it will default to `on-click-prevent-default-change-location` behavior.
 
-## Implementation overview
+### Observation
 
-* on-hash-change - router looks for the `window.location.hash` and updates the view
-* on-click-prevent-default - router looks for `href` attribute in the clicked link and updates the view
-* on-click-prevent-default-change-hash - router looks for `href` attribute in the clicked link and updates the view and `window.location.hash`
-* on-click-prevent-default-change-location - router looks for `href` attribute in the clicked link and updates the view and `window.history`
+- [on-hash-change](https://github.com/sarbbottam/spa-fm/tree/master/lib/vanilla/on-hash-change) -
+jumping focus behavior in Safari & VoiceOver combination in El Capitan
+- [on-click-prevent-default](https://github.com/sarbbottam/spa-fm/tree/master/lib/vanilla/on-click-prevent-default) -
+**no jumping focus behavior in Safari & VoiceOver combination in El Capitan**
+- [on-click-prevent-default-change-hash](https://github.com/sarbbottam/spa-fm/tree/master/lib/vanilla/on-click-prevent-default-change-hash) -
+jumping focus behavior in Safari & VoiceOver combination in El Capitan
+- [on-click-prevent-default-change-location](https://github.com/sarbbottam/spa-fm/tree/master/lib/vanilla/on-click-prevent-default-change-location) -
+**no jumping focus behavior in Safari & VoiceOver combination in El Capitan**
 
-## Observation
-
-* on-hash-change - jumping focus behavior in Safari & VoiceOver combination in El Capitan
-* on-click-prevent-default - **no jumping focus behavior in Safari & VoiceOver combination in El Capitan**
-* on-click-prevent-default-change-hash - jumping focus behavior in Safari & VoiceOver combination in El Capitan
-* on-click-prevent-default-change-location - **no jumping focus behavior in Safari & VoiceOver combination in El Capitan**
-
-## Screencast
+### Screencast
 
 [![Jumping focus in Safari/El Capitan with Voice Over ](http://i.imgur.com/TUHX3GJ.png)](https://www.youtube.com/watch?v=hYIX24nA8qI)
 
-## Why there is no jumping focus in `on-click-prevent-default` & `on-click-prevent-default-change-location` implementation in Safari & VoiceOver combination in El Capitan?
+### Why there is no jumping focus in `on-click-prevent-default` & `on-click-prevent-default-change-location` implementation in Safari & VoiceOver combination in El Capitan?
 
 My guess, Safari & VoiceOver combination in El Capitan, is trying to set focus intelligently by referring the current URL and the `hash` fragment.
 
-## Want to play around?
+### Want to play around?
 
 >Prerequisites
 - [node](https://nodejs.org/en/)
