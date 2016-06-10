@@ -72,3 +72,30 @@ My guess, Safari & VoiceOver combination in El Capitan, is trying to set focus i
 - run webpack-dev-server - `npm start`
 - pass `query-param` `type=on-hash-change` or `type=on-click-prevent-default` or `type=on-click-prevent-default-change-hash` to the url of the index.html, default is `on-hash-change` behavior.
 - make changes, reload the page
+
+## NVDA and focus management
+
+### Observation
+
+In either of the implementation, when line item links in message-list is activated, everything is as desired, other than NVDA does not announce the updated content.
+Same is true for when 'Back to message list' link, the container is updated with new content, and the container receives focus.
+However the content is not announced.
+
+My guess, when the container of the activated link is updated, NVDA does not readout the content.
+Please refer [this CodePen](http://codepen.io/sarbbottam/full/yJeQLa/).
+
+```html
+<div id="app">
+  <a href="#foo">foo</a>
+  <a href="#bar">bar</a>
+  <a href="#baz">baz</a>
+  <div id="outlet" tabindex="-1">
+    loaded foo
+    <a href="#bar">load bar</a>
+    <a href="#baz">load baz</a>
+  </div>
+</div>
+```
+
+When the links outside `outlet` container is activated, outlet container is updated and focused, and NVDA reads out the content of `outlet` container.
+However, when the links within the `outlet` container is activated, outlet container is updated and focused, but NVDA does not readout the content of `outlet` container.
